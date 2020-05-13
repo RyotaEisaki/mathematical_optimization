@@ -1,6 +1,6 @@
 from gurobipy import *
 
-# 輸送問題
+# 双対問題
 
 # demand
 d={1:80, 2:270, 3:250, 4:160, 5:180}
@@ -51,3 +51,7 @@ EPS=1.e-6
 for (i,j) in x:
     if x[i,j].X >EPS:
         print("sending quantity %10s from factory %3s to customer %3s"%(x[i,j].X,j,i))
+
+print("Const, Name: Slack, Dual")
+for c in model.getConstrs():
+    print("%s, %s, %s" %(c.ConstrName,c.Slack,c.Pi))

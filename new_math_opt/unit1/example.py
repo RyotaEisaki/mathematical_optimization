@@ -34,3 +34,4 @@ print("Opt. Value=", model.ObjVal)
 # 最適解の出力
 for v in model.getVars():
     print(v.VarName, v.X)
+
