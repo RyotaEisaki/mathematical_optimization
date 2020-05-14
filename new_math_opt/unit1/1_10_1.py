@@ -1,7 +1,5 @@
 from gurobipy import *
 
-# 栄養問題
-
 # 実行不可能な問題
 
 model=Model("lo infeas")
