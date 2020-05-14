@@ -31,7 +31,7 @@ model=Model("modern diet")
 # 変数
 x={}
 for j in F:
-    x[j]=model.addVar(vtype="I","x(%s)"%i)
+    x[j]=model.addVar(vtype="I",name="x(%s)"%j)
 model.update()
 for i in N:
     model.addConstr(quicksum(d[j][i]*x[j] for j in F) >= a[i], "NutrLB(%s)"%i)
@@ -45,4 +45,12 @@ model.computeIIS()
 for c in model.getConstrs():
     if c.IISConstr:
         print(c.ConstrName)
-        
+
+# feasrelaxS:モデルを実行可能解からの逸脱ペナルティの和を最小にするものに変更するモデル
+model.feasRelaxS(1,True,False,True)
+# 逸脱量の二条和を計算、逸脱量の和を最小化した上で費用を最小化する、変数の上下限制約の逸脱は無視、制約の逸脱を考慮
+status=model.Status
+if status==GRB.Status.OPTIMAL:
+    print("Opt. Value=", model.ObjVal)
+    for v in model.getVars():
+        print(v.VarName,v.X)
