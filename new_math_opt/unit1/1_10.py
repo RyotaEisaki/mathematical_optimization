@@ -14,7 +14,18 @@ model.setObjective(x1+x2, GRB.MAXIMIZE)
 model.optimize()
 
 status=model.Status
-if status==GRB.Status.OPTIMAL:
-    print("Opt. Value=", model.ObjVal)
-    for v in model.getVars():
-        print(v.VarName, v.X)
+# if status==GRB.Status.OPTIMAL:
+#     print("Opt. Value=", model.ObjVal)
+#     for v in model.getVars():
+#         print(v.VarName, v.X)
+
+if status==GRB.Status.UNBOUNDED or status== GRB.Status.INF_OR_UNBD:
+    model.setObjective(0,GRB.MAXIMIZE)
+    model.optimize()
+    status= model.Status
+if status== GRB.Status.OPTIMAL:
+    print("Infeasible")
+elif status== GRB.Status.INFEASIBLE:
+    print("Infeasible")
+else:
+    print("Error: solver finished with non-optimal status", status)
