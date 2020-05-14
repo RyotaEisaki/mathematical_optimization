@@ -16,7 +16,7 @@ while 1:
     model.addConstr((2*theta-1)*x+(4*theta-1)*y >=0)
     model.setObjective(x+y+z,GRB.MINIMIZE)
     model.optimize()
-    if model.Status==GRB.OPTIMAL:
+    if model.Status==GRB.OPTIMAL: #許容誤差の範囲内で最適解が見つかった
         UB=theta
         if UB-LB<=ESP:
             break
