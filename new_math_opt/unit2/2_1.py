@@ -47,9 +47,16 @@ if __name__=="__main__":
     # x={}
     model.optimize()
     print("Optimal value:", model.ObjVal)
-    print(model.data)
+    x=model.__data[0]
     EPS=1.e-6
     for (i,j) in x:
         if x[i,j].X >EPS:
             print("sending quantity %10s from factory %3s to customer %3s"%(x[i,j].X,j,i))
+    y=model.__data[1]
+    for j in J:
+        print(y[j])
+        # if y[j]==0:
+        #     print(j," is open")
+        # else:
+        #     print(j," is not open")
 
