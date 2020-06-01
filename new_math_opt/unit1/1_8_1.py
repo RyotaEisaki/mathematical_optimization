@@ -4,7 +4,7 @@ from gurobipy import *
 # 整数に限らない
 
 model = Model("fractional 1")
-x=model.addVjar()
+x=model.addVar()
 y=model.addVar()
 z=model.addVar()
 t=model.addVar()

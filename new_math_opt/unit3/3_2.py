@@ -17,8 +17,8 @@ def CuttingStockExample():
 def FFD(s,B):
     remain=[B] # 現在使える人の残りサイズ
     sol=[[]] # 解を保管するリスト
-    for item in sorted(s,recerse=True): # アイテムのサイズを大きい順に取り出している
-        for (j,free) in emumerate(remain):
+    for item in sorted(s,reverse=True): # アイテムのサイズを大きい順に取り出している
+        for (j,free) in enumerate(remain):
             if free >= item:
                 remain[j]-=item
                 sol[j].append(item)
@@ -42,7 +42,7 @@ def bpp(s,B):
     for i in range(n):
         model.addConstr(quicksum(x[i,j] for j in range(U)) ==1)
     for j in range(U):
-        model.addConstr(quicksums[i]*x[i,j] for i in range(n))<+B*y[i]))
+        model.addConstr(quicksum([i]*x[i,j] for i in range(n))<+B*y[i])
     for j in range(U):
         for i in range(n):
             model.addConstr(x[i,j]<=y[j])
@@ -50,3 +50,13 @@ def bpp(s,B):
     model.update()
     model.__data=x,y
     return model
+
+# メイン関数
+if __name__=="__main__":
+    s,B= CuttingStockExample()
+    sol=FFD(s,B)
+    model=bpp(s,B)
+    x,y={},{}
+    model.optimize()
+    # print(x)
+   
