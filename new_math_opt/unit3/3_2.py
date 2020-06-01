@@ -53,10 +53,9 @@ def bpp(s,B):
 
 # メイン関数
 if __name__=="__main__":
+    x,y={},{}
     s,B= CuttingStockExample()
     sol=FFD(s,B)
     model=bpp(s,B)
-    x,y={},{}
     model.optimize()
-    # print(x)
    
