@@ -19,3 +19,24 @@ def k_cover(I,J,c,k):
     model.update()
     model.__data=x,y,z
     return model
+def solve_kcenter(I,J,c,k):
+    model=k_cover(I,J,c,k)
+    model.Params.Cntoff=.1 # 探索の途中で下界が0.1を超えたら終了するように設定している
+    x,y,z=model.__data
+    LB=0
+    UB=max(c[i,j], for (i,j) in c)
+    while UB-LB > 1.e-4:
+        theta=(UB-LB)/2
+        for j in J:
+            for i in I:
+                if c[i,j]>theta:
+                    x[i,j].UB=0
+                else:
+                    x[i,j].UB=1.0
+        model.updata()
+        model.optimize()
+        infeasibility=sum([z[i].X for i in I])
+        if infeasibility>0:
+            LB=theta
+        else:
+            UB=theta
