@@ -31,3 +31,14 @@ from pulp import lpDot, lpSum
 lpSum(変数のリスト)　# 和の書き方
 
 lpDot(係数のリスト、変数のリスト) # 内積の書き方
+
+### ソルバーの実行
+m.solve()
+
+ソルバーを実行した結果のステータス
+
+from pulp import LpStatus
+
+m.status # 実行した結果の整数値
+
+LpStatus[m.status] # 実行した血kの文字列
