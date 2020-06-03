@@ -18,3 +18,16 @@ x=[LpVariable(name_i, cat=LpBinary) for i in range(n)]
 m += 「式」
 m.objective で設定した目的関数を参照できる
 ### 制約条件の追加
+m += 「式」 == 「式」
+
+
+m += 「式」 <= 「式」
+
+
+m += 「式」 >= 「式」
+
+
+式には変数の合計、係数と変数の内積を書くことが多い
+from pulp import lpDot, lpSum
+lpSum(変数のリスト)　# 和の書き方
+lpDot(係数のリスト、変数のリスト) # 内積の書き方
