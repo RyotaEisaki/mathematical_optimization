@@ -11,4 +11,10 @@ x=LpVariable(name)
 - 0-1変数
 x=LpVariable(name, cat=LpBinary)
 - 連続変数のリスト
-#### 
+x=[LpVariable(name_i, lowBound=0) for i in range(n)]
+- 0-1変数のリスト
+x=[LpVariable(name_i, cat=LpBinary) for i in range(n)]
+### 目的関数の設定
+m += 「式」
+m.objective で設定した目的関数を参照できる
+### 制約条件の追加
