@@ -42,3 +42,19 @@ from pulp import LpStatus
 m.status # 実行した結果の整数値
 
 LpStatus[m.status] # 実行した血kの文字列
+
+- CBCを利用(デフォルト)
+m.solve()
+- GUROBIを利用
+m.solve(GUROBI_CMP())
+- CPLEXを利用
+m.solve(CPLEX_CMP())
+- GLPKを利用
+m.solve(GLPK_CMP())
+- CBCでオプションを指定
+cmd=PULP_CBC_CMD(maxSecond=1,fracGap=0.01, keepFiles=True)
+
+m.solve(cmd)
+
+- - maxSeconde: 打ち切り時間を秒で指定する。この指定時間を超えたきりのいいところで打ち切り。途中解があれば出力
+- - fracGap: 解の良さの指標MIP gap を指定する。
