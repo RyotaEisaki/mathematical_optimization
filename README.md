@@ -9,4 +9,5 @@ Pythonによる数理最適化 Mathematical Optimization with Python
 - NetworkX
 - matplotlib
 - more-itertools
-- pillow, ortoolpy, dual, japanmap, gurobi
+- pillow
+- ortoolpy, dual, japanmap, gurobi
