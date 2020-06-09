@@ -12,4 +12,5 @@ Pythonによる数理最適化 Mathematical Optimization with Python
 - pillow
 - ortoolpy
 - dual
-- japanmap, gurobi
+- japanmap
+- gurobi
