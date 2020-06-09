@@ -1,4 +1,4 @@
-# mathematical_optimization
+# Mathematical_Optimization
 Pythonによる数理最適化 Mathematical Optimization with Python
 
 ## 使用ライブラリー
