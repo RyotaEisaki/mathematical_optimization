@@ -2,19 +2,19 @@ from gurobipy import *
 
 # 輸送問題
 
-# demand
-d={1:80, 2:270, 3:250, 4:160, 5:180}
+# # demand
+# d={1:80, 2:270, 3:250, 4:160, 5:180}
 
-# capacity
-M={1:500, 2:500, 3:500}
+# # capacity
+# M={1:500, 2:500, 3:500}
 
-# customer and manufucture
-I=[1,2,3,4,5]
-J=[1,2,3]
+# # customer and manufucture
+# I=[1,2,3,4,5]
+# J=[1,2,3]
 
 # # multidict
-# I,d =multidict({1:80, 2:270, 3:250, 4:160, 5:180})
-# J,M =multidict({1:500, 2:500, 3:500})
+I,d =multidict({1:80, 2:270, 3:250, 4:160, 5:180})
+J,M =multidict({1:500, 2:500, 3:500})
 
 # cost
 c={(1,1):4, (1,2):6, (1,3):9,
