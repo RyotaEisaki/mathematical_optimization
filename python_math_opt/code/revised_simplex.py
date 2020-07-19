@@ -35,9 +35,3 @@ def lp_RevisedSimplex(c,A,b):
             r=np.argmin(ratio)
             #　基底十匹邸の入れ替え
             nonbasis[s],basis[r]=basis[r],nonbasis[s]
-
-A=np.array([[2,2,-1],[2,-2,3],[0,2,-1]])
-c=np.array([4,3,5])
-b=np.array([6,8,4])
-
-lp_RevisedSimplex(c,A,b)
